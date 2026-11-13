@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-900 font-sans text-bone antialiased;
+  background-image: radial-gradient(1200px 600px at 80% -10%, rgba(53, 232, 212, 0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(200, 255, 62, 0.05), transparent 60%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: #c8ff3e;
+  color: #08130f;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1d463d transparent;
+}
+
+@layer components {
+  /* circuit-paper grid that fades out toward the edges */
+  .grid-bg {
+    background-image: linear-gradient(rgba(200, 255, 62, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 255, 62, 0.07) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 25%, #000 25%, transparent 72%);
+    mask-image: radial-gradient(ellipse at 50% 25%, #000 25%, transparent 72%);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-lime text-ink-900 shadow-[4px_4px_0_0_#35E8D4] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#35E8D4] active:translate-x-1 active:translate-y-1 active:shadow-none;
+  }
+  .btn-ghost {
+    @apply btn border border-white/15 bg-white/[0.03] text-bone hover:border-lime/60 hover:text-lime;
+  }
+  .btn-danger {
+    @apply btn border border-coral/40 bg-coral/10 text-coral hover:bg-coral/20;
+  }
+  .btn-sm {
+    @apply px-3 py-2 text-xs;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-ink-800/70 backdrop-blur-sm;
+  }
+  .card-hover {
+    @apply card transition duration-200 hover:-translate-y-0.5 hover:border-lime/40;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-950/70 px-4 py-3 text-sm text-bone placeholder:text-mute/60 outline-none transition focus:border-lime/70 focus:ring-2 focus:ring-lime/20;
+  }
+  .label {
+    @apply mb-1.5 block font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-mute;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-lime/25 bg-lime/[0.07] px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-lime;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.22em] text-aqua;
+  }
+  .h-display {
+    @apply font-display font-bold leading-[1.05] tracking-tight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
